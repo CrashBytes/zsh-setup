@@ -22,12 +22,13 @@ alias gstash="git stash --include-untracked"
 alias gstashp="git stash pop"
 alias gstashl="git stash list"
 
-# Prompt management
-alias prompt-gitline="$HOME/GitHub/MacBook-config/scripts/prompt-set.sh gitline"
-alias prompt-minimal="$HOME/GitHub/MacBook-config/scripts/prompt-set.sh minimal"
-alias prompt-twoline="$HOME/GitHub/MacBook-config/scripts/prompt-set.sh twoline"
-alias prompt-theme="$HOME/GitHub/MacBook-config/scripts/prompt-set.sh theme"
-alias prompt-cycle="$HOME/GitHub/MacBook-config/scripts/prompt-cycle.sh"
+# Prompt management (optional - requires external scripts)
+# Uncomment and adjust paths if you have custom prompt scripts:
+# alias prompt-gitline="$HOME/.config/shell-scripts/prompt-set.sh gitline"
+# alias prompt-minimal="$HOME/.config/shell-scripts/prompt-set.sh minimal"
+# alias prompt-twoline="$HOME/.config/shell-scripts/prompt-set.sh twoline"
+# alias prompt-theme="$HOME/.config/shell-scripts/prompt-set.sh theme"
+# alias prompt-cycle="$HOME/.config/shell-scripts/prompt-cycle.sh"
 
 # Yarn via corepack
 alias yarn='corepack yarn'

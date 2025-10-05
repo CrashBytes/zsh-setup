@@ -36,6 +36,7 @@ These are referenced in the config but not required:
 - **NVM** - Node Version Manager for Node.js development
 - **Google Cloud SDK** - For GCP development
 - **.NET SDK** - For .NET development
+- **Visual Studio Code** - PATH includes VS Code CLI (`code` command)
 
 ### Optional Plugins
 
@@ -52,13 +53,24 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 Then uncomment the plugin lines in `30-ohmyzsh.zsh`.
 
+### External Scripts (Optional)
+
+Some commented-out aliases in `70-aliases.zsh` reference external prompt management scripts:
+- `prompt-set.sh` - Script for switching prompt styles
+- `prompt-cycle.sh` - Script for cycling through prompt themes
+
+**Note:** These are optional personal scripts. You can:
+- Comment them out (default)
+- Create your own scripts at `$HOME/.config/shell-scripts/`
+- Use the built-in prompt configuration in `20-prompt.zsh` instead
+
 ## Installation
 
 ### Option 1: Clone to .zshrc.d
 
 ```bash
 # Clone this repo
-git clone <your-repo-url> ~/.zshrc.d
+git clone https://github.com/CrashBytes/zshrc-setup.git ~/.zshrc.d
 
 # Add loader to your ~/.zshrc
 cat >> ~/.zshrc << 'EOF'
@@ -79,7 +91,26 @@ EOF
 source ~/.zshrc
 ```
 
-### Option 2: Manual Installation
+### Option 2: Use install.sh Script
+
+```bash
+# Clone the repository
+git clone https://github.com/CrashBytes/zshrc-setup.git
+cd zshrc-setup
+
+# Run the installer
+./install.sh
+```
+
+The installer will:
+- ✅ Install Oh My Zsh if not present
+- ✅ Install Powerline fonts (macOS)
+- ✅ Backup existing `.zshrc` and `.zshrc.d`
+- ✅ Copy configuration files
+- ✅ Configure Finder to show hidden files (macOS)
+- ✅ Reload the configuration
+
+### Option 3: Manual Installation
 
 ```bash
 # Create directory
@@ -88,7 +119,7 @@ mkdir -p ~/.zshrc.d
 # Copy individual files
 cp *.zsh ~/.zshrc.d/
 
-# Add loader to ~/.zshrc (same as above)
+# Add loader to ~/.zshrc (same as Option 1)
 ```
 
 ## Customization
@@ -179,7 +210,7 @@ Either install the plugin or remove it from `30-ohmyzsh.zsh`.
 Check if the file is being sourced:
 
 ```bash
-echo $PATH | grep -o ".macbook-config"
+echo $PATH | grep -o ".config"
 ```
 
 If nothing prints, the file isn't loading. Verify `~/.zshrc` has the loader.
@@ -192,6 +223,13 @@ If referenced tools (Android SDK, NVM, etc.) aren't installed, comment out those
 # In 40-exports.zsh
 # export ANDROID_HOME="$HOME/Library/Android/sdk"
 ```
+
+### External Scripts Missing
+
+If you see errors about missing `prompt-set.sh` or similar:
+- These are optional personal scripts
+- They're commented out by default in `70-aliases.zsh`
+- You can safely ignore or create your own versions
 
 ## Contributing
 
