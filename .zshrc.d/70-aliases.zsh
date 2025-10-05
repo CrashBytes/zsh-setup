@@ -1,3 +1,4 @@
+# Git aliases
 alias gs="git status"
 alias gl="git log --oneline --graph --decorate --all"
 alias gp="git push"
@@ -20,9 +21,13 @@ alias gstatus="git status -s"
 alias gstash="git stash --include-untracked"
 alias gstashp="git stash pop"
 alias gstashl="git stash list"
-alias prompt-gitline="/Users/crashbytes/GitHub/MacBook-config/scripts/prompt-set.sh gitline"
-alias prompt-minimal="/Users/crashbytes/GitHub/MacBook-config/scripts/prompt-set.sh minimal"
-alias prompt-twoline="/Users/crashbytes/GitHub/MacBook-config/scripts/prompt-set.sh twoline"
-alias prompt-theme="/Users/crashbytes/GitHub/MacBook-config/scripts/prompt-set.sh theme"
-alias prompt-cycle="/Users/crashbytes/GitHub/MacBook-config/scripts/prompt-cycle.sh"
+
+# Prompt management
+alias prompt-gitline="$HOME/GitHub/MacBook-config/scripts/prompt-set.sh gitline"
+alias prompt-minimal="$HOME/GitHub/MacBook-config/scripts/prompt-set.sh minimal"
+alias prompt-twoline="$HOME/GitHub/MacBook-config/scripts/prompt-set.sh twoline"
+alias prompt-theme="$HOME/GitHub/MacBook-config/scripts/prompt-set.sh theme"
+alias prompt-cycle="$HOME/GitHub/MacBook-config/scripts/prompt-cycle.sh"
+
+# Yarn via corepack
 alias yarn='corepack yarn'
