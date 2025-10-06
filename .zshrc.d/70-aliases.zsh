@@ -30,5 +30,28 @@ alias gstashl="git stash list"
 # alias prompt-theme="$HOME/.config/shell-scripts/prompt-set.sh theme"
 # alias prompt-cycle="$HOME/.config/shell-scripts/prompt-cycle.sh"
 
+# Git workflow function: add, commit with message, and push
+# Usage: gamf "commit message" [file]
+# If no file specified, defaults to . (all files)
+gamf() {
+    local message="$1"
+    local file="${2:-.}"
+    
+    if [ -z "$message" ]; then
+        echo "Error: Commit message required"
+        echo "Usage: gamf \"commit message\" [file]"
+        return 1
+    fi
+    
+    echo "Adding: $file"
+    git add "$file"
+    
+    echo "Committing: $message"
+    git commit -m "$message"
+    
+    echo "Pushing to remote..."
+    git push
+}
+
 # Yarn via corepack
 alias yarn='corepack yarn'
