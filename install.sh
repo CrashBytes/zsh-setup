@@ -86,7 +86,23 @@ fi
 # Copy .zshrc.d directory if it exists
 if [ -d "$SCRIPT_DIR/.zshrc.d" ]; then
     echo -e "${GREEN}Installing .zshrc.d directory${NC}"
-    cp -r "$SCRIPT_DIR/.zshrc.d" ~/
+    
+    # Remove existing directory to ensure clean copy
+    if [ -d ~/.zshrc.d ] && [ ! -L ~/.zshrc.d ]; then
+        rm -rf ~/.zshrc.d
+    fi
+    
+    # Copy with verbose error checking
+    if cp -r "$SCRIPT_DIR/.zshrc.d" ~/ 2>/dev/null; then
+        echo -e "${GREEN}✓ .zshrc.d directory installed successfully${NC}"
+        echo -e "${BLUE}  Installed files:${NC}"
+        ls -la ~/.zshrc.d/ | tail -n +4 | awk '{print "    " $9}'
+    else
+        echo -e "${RED}✗ Failed to copy .zshrc.d directory${NC}"
+        exit 1
+    fi
+else
+    echo -e "${YELLOW}⚠ .zshrc.d directory not found in $SCRIPT_DIR${NC}"
 fi
 
 # Enable showing hidden files in Finder (macOS)
@@ -107,7 +123,29 @@ if ! grep -q "alias ls='ls -la'" ~/.zshrc 2>/dev/null; then
 fi
 
 echo -e "\n${GREEN}✓ Installation complete!${NC}"
-echo -e "${BLUE}Reloading zsh configuration...${NC}"
+
+# Verify installation
+echo -e "\n${BLUE}Verifying installation...${NC}"
+if [ -f ~/.zshrc ]; then
+    echo -e "${GREEN}✓ .zshrc installed${NC}"
+else
+    echo -e "${RED}✗ .zshrc not found${NC}"
+fi
+
+if [ -d ~/.zshrc.d ]; then
+    FILE_COUNT=$(ls -1 ~/.zshrc.d/*.zsh 2>/dev/null | wc -l | tr -d ' ')
+    echo -e "${GREEN}✓ .zshrc.d installed with $FILE_COUNT files${NC}"
+else
+    echo -e "${RED}✗ .zshrc.d directory not found${NC}"
+fi
+
+if [ -d ~/.oh-my-zsh ]; then
+    echo -e "${GREEN}✓ oh-my-zsh installed${NC}"
+else
+    echo -e "${RED}✗ oh-my-zsh not found${NC}"
+fi
+
+echo -e "\n${BLUE}Reloading zsh configuration...${NC}"
 
 # Source the new configuration
 if [ -n "$ZSH_VERSION" ]; then
