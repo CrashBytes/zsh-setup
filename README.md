@@ -21,8 +21,8 @@ A clean, modular ZSH configuration using Oh My Zsh with organized file structure
 ### One-Command Installation
 
 ```bash
-git clone https://github.com/CrashBytes/zshrc-setup.git /tmp/zshrc-setup
-cd /tmp/zshrc-setup
+git clone git@github.com:CrashBytes/zsh-setup.git /tmp/zsh-setup
+cd /tmp/zsh-setup
 ./install.sh
 ```
 
@@ -36,8 +36,9 @@ The installer will:
 ### Manual Installation
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/CrashBytes/zshrc-setup.git ~/.zshrc.d
+# 1. Clone the repository and copy the config modules into place
+git clone git@github.com:CrashBytes/zsh-setup.git /tmp/zsh-setup
+cp -R /tmp/zsh-setup/.zshrc.d ~/
 
 # 2. Add the loader to your ~/.zshrc
 cat >> ~/.zshrc << 'EOF'
@@ -233,7 +234,7 @@ MIT License - feel free to use and modify as needed.
 
 ## 📬 Support
 
-- **Issues:** [GitHub Issues](https://github.com/CrashBytes/zshrc-setup/issues)
+- **Issues:** [GitHub Issues](https://github.com/CrashBytes/zsh-setup/issues)
 - **Questions:** Open a discussion or issue
 
 ---

@@ -66,11 +66,12 @@ Some commented-out aliases in `70-aliases.zsh` reference external prompt managem
 
 ## Installation
 
-### Option 1: Clone to .zshrc.d
+### Option 1: Copy .zshrc.d into place
 
 ```bash
-# Clone this repo
-git clone https://github.com/CrashBytes/zshrc-setup.git ~/.zshrc.d
+# Clone this repo and copy the config modules into place
+git clone git@github.com:CrashBytes/zsh-setup.git /tmp/zsh-setup
+cp -R /tmp/zsh-setup/.zshrc.d ~/
 
 # Add loader to your ~/.zshrc
 cat >> ~/.zshrc << 'EOF'
@@ -95,8 +96,8 @@ source ~/.zshrc
 
 ```bash
 # Clone the repository
-git clone https://github.com/CrashBytes/zshrc-setup.git
-cd zshrc-setup
+git clone git@github.com:CrashBytes/zsh-setup.git
+cd zsh-setup
 
 # Run the installer
 ./install.sh
